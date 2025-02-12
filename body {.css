@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#fce5cd"/>
+  
+  <!-- Flower Pot -->
+  <path d="M175 280 L225 280 L235 320 L165 320 Z" fill="#8B4513"/>
+  
+  <!-- Stem -->
+  <rect x="197" y="180" width="6" height="100" fill="#228B22"/>
+  
+  <!-- Leaves -->
+  <path d="M197 220 Q180 230 197 240" fill="#228B22" stroke="#228B22" stroke-width="2"/>
+  <path d="M203 230 Q220 240 203 250" fill="#228B22" stroke="#228B22" stroke-width="2"/>
+  
+  <!-- Drop Shadow for Flower -->
+  <filter id="shadow">
+    <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+  </filter>
+  
+  <!-- Flower Petals -->
+  <g filter="url(#shadow)">
+    <!-- Outer ring of petals -->
+    <circle cx="200" cy="110" r="28" fill="#FFE44D"/>
+    <circle cx="160" cy="150" r="28" fill="#FFE44D"/>
+    <circle cx="240" cy="150" r="28" fill="#FFE44D"/>
+    <circle cx="175" cy="120" r="28" fill="#FFE44D"/>
+    <circle cx="225" cy="120" r="28" fill="#FFE44D"/>
+    <circle cx="175" cy="170" r="28" fill="#FFE44D"/>
+    <circle cx="225" cy="170" r="28" fill="#FFE44D"/>
+    <circle cx="200" cy="180" r="28" fill="#FFE44D"/>
+    
+    <!-- Center -->
+    <circle cx="200" cy="150" r="40" fill="#FFA500"/>
+  </g>
+  
+  <!-- Smiley Face -->
+  <g transform="translate(200 150)">
+    <!-- Eyes -->
+    <circle cx="-15" cy="-5" r="4" fill="black"/>
+    <circle cx="15" cy="-5" r="4" fill="black"/>
+    
+    <!-- Smile - more pronounced curve -->
+    <path d="M-20 10 Q0 25 20 10" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="360" text-anchor="middle" font-family="Comic Sans MS, sans-serif" font-size="24" fill="black">
+    ¿Quieres ser mi San Valentín? 🌻❤️
+  </text>
+</svg>
+
+

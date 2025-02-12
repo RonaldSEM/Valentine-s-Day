@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi luna❤️</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            background-color: #fce5cd;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;  /* Añadido para los corazones */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .flower-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+
+        .flower-head {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform-origin: bottom center;
+            animation: sway 2s infinite;
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        h2 {
+            margin-top: -80px; /* Ajustar la posición del texto */
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #cartaBtn {
+            background-color: #ff66b2;
+            color: white;
+        }
+
+        /* Estilos añadidos para los corazones */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: #ff66b2;
+            user-select: none;
+            cursor: default;
+            animation: heartFloat 4s linear;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reproductor oculto de SoundCloud (no visible en la página) -->
+    <iframe id="soundcloudPlayer" style="display: none;" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1264227238&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+
+    <div class="container">
+        <!-- Flower container -->
+        <div class="flower-container">
+            <!-- SVG flower -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+                <!-- Background -->
+                <rect width="400" height="400" fill="#fce5cd"/>
+
+                <!-- Flower Pot -->
+                <path d="M175 280 L225 280 L235 320 L165 320 Z" fill="#8B4513"/>
+
+                <!-- Stem and flower -->
+                <g class="flower-head">
+                    <!-- Stem -->
+                    <rect x="197" y="180" width="6" height="100" fill="#228B22"/>
+
+                    <!-- Leaves -->
+                    <path d="M197 220 Q180 230 197 240" fill="#228B22" stroke="#228B22" stroke-width="2"/>
+                    <path d="M203 230 Q220 240 203 250" fill="#228B22" stroke="#228B22" stroke-width="2"/>
+
+                    <!-- Drop Shadow for Flower -->
+                    <filter id="shadow">
+                        <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                    </filter>
+
+                    <!-- Flower Petals -->
+                    <g filter="url(#shadow)">
+                        <!-- Outer ring of petals -->
+                        <circle cx="200" cy="110" r="28" fill="#FFE44D"/>
+                        <circle cx="160" cy="150" r="28" fill="#FFE44D"/>
+                        <circle cx="240" cy="150" r="28" fill="#FFE44D"/>
+                        <circle cx="175" cy="120" r="28" fill="#FFE44D"/>
+                        <circle cx="225" cy="120" r="28" fill="#FFE44D"/>
+                        <circle cx="175" cy="170" r="28" fill="#FFE44D"/>
+                        <circle cx="225" cy="170" r="28" fill="#FFE44D"/>
+                        <circle cx="200" cy="180" r="28" fill="#FFE44D"/>
+
+                        <!-- Center -->
+                        <circle cx="200" cy="150" r="40" fill="#FFA500"/>
+                    </g>
+
+                    <!-- Smiley Face -->
+                    <g transform="translate(200 150)">
+                        <!-- Eyes -->
+                        <circle cx="-15" cy="-5" r="4" fill="black"/>
+                        <circle cx="15" cy="-5" r="4" fill="black"/>
+
+                        <!-- Smile - more pronounced curve -->
+                        <path d="M-20 10 Q0 25 20 10" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+        <h2>Te amo mi San Valentin❤️</h2>
+        <button id="cartaBtn">¡Ver carta! 💖</button>
+    </div>
+
+    <script>
+        // Funciones añadidas para los corazones
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(heart);
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        function startHearts() {
+            // Crear 30 corazones iniciales
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+
+            // Continuar creando corazones cada cierto tiempo
+            setInterval(() => {
+                createHeart();
+            }, 300);
+        }
+
+        document.getElementById("cartaBtn").addEventListener("click", function() {
+            // Iniciar la música
+            var iframe = document.getElementById("soundcloudPlayer");
+            var src = iframe.src;
+            iframe.src = src + "&auto_play=true";
+            
+            // Iniciar la animación de corazones
+            startHearts();
+            
+            // Descargar el PDF
+            var link = document.createElement('a');
+            link.href = "https://drive.google.com/uc?export=download&id=1quLeRXOnsZGPuL-WGlFCnLcUjuUh8Ofe";  // Enlace modificado
+            link.download = "Mi_carta.pdf";  // Nombre del archivo cuando se descargue
+            link.click();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
